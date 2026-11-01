@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PowerupDatabase" format=3 uid="uid://bqvihuule1qfu"]
+
+[ext_resource type="Script" uid="uid://bslulkxbp70v5" path="res://scripts/powerup/powerup_decorator_data.gd" id="1_clvwx"]
+[ext_resource type="Script" uid="uid://brlaggshk3l6g" path="res://scripts/powerup/powerup_database.gd" id="1_db"]
+[ext_resource type="Resource" uid="uid://b4hxkvn4a5rga" path="res://data/powerup/speed_boots.tres" id="2_8pkle"]
+[ext_resource type="Resource" uid="uid://d1gwjv7mxmw5c" path="res://data/powerup/damage_x2.tres" id="3_plduk"]
+[ext_resource type="Resource" uid="uid://d4hcgp4n4gmrk" path="res://data/powerup/orbit_blade.tres" id="4_8pkle"]
+[ext_resource type="Resource" path="res://data/powerup/magnet.tres" id="5_magnet"]
+[ext_resource type="Resource" path="res://data/powerup/shield.tres" id="6_shield"]
+
+[resource]
+script = ExtResource("1_db")
+powerups = Array[ExtResource("1_clvwx")]([ExtResource("2_8pkle"), ExtResource("3_plduk"), ExtResource("4_8pkle"), ExtResource("5_magnet"), ExtResource("6_shield")])

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bn676sn1u44lb"]
+
+[ext_resource type="Script" path="res://scenes/camera/camera_rig.gd" id="1_rig"]
+
+[node name="CameraRig" type="Node3D"]
+script = ExtResource("1_rig")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70710678, 0.70710678, 0, -0.70710678, 0.70710678, 0, 30, 30)
+current = true
+fov = 30.0

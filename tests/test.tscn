@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://baygnn41cmsh4"]
+
+[ext_resource type="Script" path="res://tests/test.gd" id="1_5fw7c"]
+[ext_resource type="PackedScene" path="res://scenes/objects/palm_tree.tscn" id="2_7y2ik"]
+[ext_resource type="PackedScene" path="res://scenes/objects/bush.tscn" id="3_vxaqg"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/mushroom/mushroom.tscn" id="4_x2dcf"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/crab/crab.tscn" id="5_rj716"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/starfish/starfish.tscn" id="6_qwp7r"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/barrel/barrel.tscn" id="7_72jlw"]
+[ext_resource type="PackedScene" path="res://scenes/objects/trap.tscn" id="8_nsppo"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="9_tipe3"]
+[ext_resource type="PackedScene" path="res://scenes/camera/camera_rig.tscn" id="10_c4fah"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0neaq"]
+size = Vector3(24, 1, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbe7f"]
+size = Vector3(24, 1, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a8d8l"]
+size = Vector3(4, 2, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bgr6y"]
+size = Vector3(4, 2, 4)
+
+[sub_resource type="Environment" id="Environment_030s3"]
+ambient_light_source = 3
+ambient_light_color = Color(0.95596343, 0.9559633, 0.95596343, 1)
+ambient_light_sky_contribution = 0.8
+ambient_light_energy = 0.56
+
+[node name="Stage" type="Node3D" unique_id=759216751]
+script = ExtResource("1_5fw7c")
+
+[node name="World" type="Node3D" parent="." unique_id=1419569295]
+
+[node name="Ground" type="MeshInstance3D" parent="World" unique_id=1267239374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_0neaq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Ground" unique_id=290498666]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/StaticBody3D" unique_id=759301600]
+shape = SubResource("BoxShape3D_hbe7f")
+
+[node name="Platform" type="MeshInstance3D" parent="World" unique_id=425185096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -2)
+mesh = SubResource("BoxMesh_a8d8l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Platform" unique_id=1301223063]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Platform/StaticBody3D" unique_id=337995646]
+shape = SubResource("BoxShape3D_bgr6y")
+
+[node name="PalmTree" parent="World" unique_id=1774627914 instance=ExtResource("2_7y2ik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+
+[node name="Bush" parent="World" unique_id=1324086156 instance=ExtResource("3_vxaqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 4)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=550547429]
+
+[node name="Mushroom" parent="Enemies" unique_id=364963600 instance=ExtResource("4_x2dcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.7, -4)
+direction = "right"
+
+[node name="Crab" parent="Enemies" unique_id=831868118 instance=ExtResource("5_rj716")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -6)
+
+[node name="Starfish" parent="Enemies" unique_id=187357819 instance=ExtResource("6_qwp7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.7, -6)
+
+[node name="Barrel" parent="Enemies" unique_id=1443339153 instance=ExtResource("7_72jlw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.7, -6)
+bullet_speed = 12.0
+
+[node name="Bullets" type="Node3D" parent="." unique_id=413328666]
+
+[node name="Items" type="Node3D" parent="." unique_id=939688944]
+
+[node name="Trap" parent="." unique_id=1610443431 instance=ExtResource("8_nsppo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
+
+[node name="Player" parent="." unique_id=1010956037 instance=ExtResource("9_tipe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
+
+[node name="CameraRig" parent="." unique_id=744204561 node_paths=PackedStringArray("target") instance=ExtResource("10_c4fah")]
+target = NodePath("../Player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1992962158]
+transform = Transform3D(0.81915206, 0.46984634, -0.32898995, 0, 0.57357645, 0.81915206, 0.57357645, -0.6710101, 0.46984634, 0, 0, 0)
+light_energy = 0.286
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1989871845]
+environment = SubResource("Environment_030s3")

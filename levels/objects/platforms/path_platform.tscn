@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dfjmgbgx2bc5t"]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/moving_platform/moving_platform.png" id="1_3v06l"]
+
+[sub_resource type="Curve3D" id="Curve3D_8gdo3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, -1.5, 0, 0, 0, 0, 0, 0, 0, 8, -4, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vh2mc"]
+albedo_texture = ExtResource("1_3v06l")
+uv1_scale = Vector3(0.25, 2, 2)
+uv1_offset = Vector3(0.5, 0, 0)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_nf17i"]
+material = SubResource("StandardMaterial3D_vh2mc")
+size = Vector3(4, 0.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b433s"]
+size = Vector3(4, 0.5, 4)
+
+[sub_resource type="Animation" id="Animation_8onk6"]
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yqdv"]
+_data = {
+&"move": SubResource("Animation_8onk6")
+}
+
+[node name="PathPlatform" type="Node3D" unique_id=785507396]
+
+[node name="Path3D" type="Path3D" parent="." unique_id=163992040]
+curve = SubResource("Curve3D_8gdo3")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1596983429]
+rotation_mode = 0
+loop = false
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D" unique_id=1872207392]
+remote_path = NodePath("../../../Platform")
+update_rotation = false
+update_scale = false
+
+[node name="Platform" type="AnimatableBody3D" parent="." unique_id=450823286]
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform" unique_id=563074057]
+mesh = SubResource("BoxMesh_nf17i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform" unique_id=1808890693]
+shape = SubResource("BoxShape3D_b433s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2044188595]
+callback_mode_process = 0
+libraries/ = SubResource("AnimationLibrary_7yqdv")
+autoplay = &"move"

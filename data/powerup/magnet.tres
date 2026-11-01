@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PowerupDecoratorData" format=3]
+
+[ext_resource type="Script" path="res://scenes/powerups/magnet_decorator.gd" id="1_magnet"]
+[ext_resource type="Script" uid="uid://bslulkxbp70v5" path="res://scripts/powerup/powerup_decorator_data.gd" id="2_data"]
+
+[resource]
+script = ExtResource("2_data")
+id = "magnet"
+display_name = "Nam châm"
+decorator_script = ExtResource("1_magnet")
+duration = 15.0
+color_modulate = Color(1, 0.92, 0.6, 1)
+metadata/_custom_type_script = "uid://bslulkxbp70v5"

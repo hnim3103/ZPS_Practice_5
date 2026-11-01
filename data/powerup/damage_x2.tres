@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PowerupDecoratorData" format=3 uid="uid://d1gwjv7mxmw5c"]
+
+[ext_resource type="Script" uid="uid://dluftjyr4m8q0" path="res://scripts/powerup/generic_powerup_decorator.gd" id="1_on4nh"]
+[ext_resource type="Script" uid="uid://bslulkxbp70v5" path="res://scripts/powerup/powerup_decorator_data.gd" id="2_3osqb"]
+
+[resource]
+script = ExtResource("2_3osqb")
+id = "damage_x2"
+display_name = "Sức mạnh x2"
+duration = 15.0
+damage_multiplier = 2.0
+color_modulate = Color(1, 0.5764706, 0.58431375, 1)
+metadata/_custom_type_script = "uid://bslulkxbp70v5"

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://beh1ay1nxg45y"]
+
+[ext_resource type="Script" uid="uid://bvv36o7f0oebf" path="res://scripts/hit_area_3d.gd" id="1_hlnsi"]
+[ext_resource type="Texture2D" uid="uid://d2ddy302xblj" path="res://assets/items/blade.png" id="2_kkmvf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kkmvf"]
+radius = 0.45
+
+[node name="OrbitBlade" type="Area3D" unique_id=451977755]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_hlnsi")
+metadata/_custom_type_script = "uid://bvv36o7f0oebf"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1287994051]
+pixel_size = 0.0625
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("2_kkmvf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1140768912]
+shape = SubResource("SphereShape3D_kkmvf")

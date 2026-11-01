@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PowerupDecoratorData" format=3 uid="uid://d4hcgp4n4gmrk"]
+
+[ext_resource type="Script" uid="uid://cjkb6277t7kjw" path="res://scenes/powerups/orbit_blade_decorator.gd" id="1_0xfsh"]
+[ext_resource type="Script" uid="uid://bslulkxbp70v5" path="res://scripts/powerup/powerup_decorator_data.gd" id="2_hhmkn"]
+
+[resource]
+script = ExtResource("2_hhmkn")
+id = "orbit_blade"
+display_name = "Kiếm bay"
+decorator_script = ExtResource("1_0xfsh")
+duration = 20.0
+metadata/_custom_type_script = "uid://bslulkxbp70v5"

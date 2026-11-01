@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://48ou5dgc44pe"]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" path="res://assets/items/coin.png" id="2_coin"]
+[ext_resource type="Texture2D" path="res://assets/items/key.png" id="3_key"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Margin" type="MarginContainer" parent="."]
+offset_right = 200.0
+offset_bottom = 60.0
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+
+[node name="Rows" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Coins" type="HBoxContainer" parent="Margin/Rows"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Margin/Rows/Coins"]
+texture_filter = 1
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+texture = ExtResource("2_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinLabel" type="Label" parent="Margin/Rows/Coins"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "0"
+
+[node name="Keys" type="HBoxContainer" parent="Margin/Rows"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Margin/Rows/Keys"]
+texture_filter = 1
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+texture = ExtResource("3_key")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KeyLabel" type="Label" parent="Margin/Rows/Keys"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "0"
+
+[node name="QuestLabel" type="Label" parent="Margin/Rows"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 12
+
+[node name="Toast" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 8.0
+offset_right = 150.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+horizontal_alignment = 1
+
+[node name="ToastTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true

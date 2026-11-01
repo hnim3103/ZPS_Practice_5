@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c76ll084nyus0"]
+
+[ext_resource type="Script" uid="uid://ubdgn25vkshi" path="res://tests/math/projectile.gd" id="1_eeobq"]
+[ext_resource type="Script" uid="uid://bnnt3cdm5awyy" path="res://tests/math/trajectory_preview.gd" id="2_ihd7k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76qcy"]
+shading_mode = 0
+albedo_color = Color(0.45, 0.5, 0.45, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vcj6l"]
+size = Vector3(14, 0.2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgt"]
+shading_mode = 0
+albedo_color = Color(0.2, 0.9, 0.3, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_tgt"]
+radius = 0.12
+height = 0.24
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1urj0"]
+albedo_color = Color(0.95, 0.4, 0.3, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sayb5"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6xc5"]
+shading_mode = 0
+albedo_color = Color(1, 0.9, 0.2, 1)
+
+[node name="TestParabola" type="Node3D" unique_id=1351253547]
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=732802931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.1, 0)
+material_override = SubResource("StandardMaterial3D_76qcy")
+mesh = SubResource("BoxMesh_vcj6l")
+
+[node name="Target" type="MeshInstance3D" parent="." unique_id=420615873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.998154, 1, 0)
+material_override = SubResource("StandardMaterial3D_tgt")
+mesh = SubResource("SphereMesh_tgt")
+
+[node name="Projectile" type="Node3D" parent="." unique_id=801256910 node_paths=PackedStringArray("target")]
+script = ExtResource("1_eeobq")
+speed = 20.0
+angle = 44.57
+target = NodePath("../Target")
+step_time = 0.001
+
+[node name="Ball" type="MeshInstance3D" parent="Projectile" unique_id=1133476299]
+material_override = SubResource("StandardMaterial3D_1urj0")
+mesh = SubResource("SphereMesh_sayb5")
+
+[node name="TrajectoryPreview" type="MeshInstance3D" parent="." unique_id=1590245871 node_paths=PackedStringArray("projectile")]
+material_override = SubResource("StandardMaterial3D_b6xc5")
+script = ExtResource("2_ihd7k")
+projectile = NodePath("../Projectile")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=994579065]
+transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=712586138]
+transform = Transform3D(1, 0, 0, 0, 0.9998348, 0.018178817, 0, -0.018178817, 0.9998348, 4.7, 1.5, 11)
+current = true

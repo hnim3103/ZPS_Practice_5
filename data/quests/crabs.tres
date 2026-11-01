@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://df0stc620b78d"]
+
+[ext_resource type="Script" uid="uid://djadcjpsa0c85" path="res://scripts/quest/quest_objective.gd" id="1_oc1vm"]
+[ext_resource type="Script" uid="uid://b1bbx5chhifxn" path="res://scripts/quest/quest_data.gd" id="2_q3fwa"]
+
+[sub_resource type="Resource" id="Resource_oc1vm"]
+script = ExtResource("1_oc1vm")
+target_id = "crab"
+amount = 3
+label = "Cua"
+metadata/_custom_type_script = "uid://djadcjpsa0c85"
+
+[resource]
+script = ExtResource("2_q3fwa")
+id = "crabs"
+title = "Dẹp cua"
+giver = "Nấm"
+prerequisite = "coins"
+objectives = Array[ExtResource("1_oc1vm")]([SubResource("Resource_oc1vm")])
+reward_coins = 10
+metadata/_custom_type_script = "uid://b1bbx5chhifxn"

@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://doy3gnpak8tb6"]
+
+[ext_resource type="Script" uid="uid://2nmelimtp44t" path="res://levels/objects/pickups/key.gd" id="1_vmplw"]
+[ext_resource type="Texture2D" uid="uid://b2bct4a64vpki" path="res://assets/items/key.png" id="2_0oijc"]
+[ext_resource type="Texture2D" uid="uid://qwamv3jnjp6m" path="res://assets/items/effect_key/1.png" id="3_uwrun"]
+[ext_resource type="Texture2D" uid="uid://b14mtfkvjjcm0" path="res://assets/items/effect_key/2.png" id="4_8obva"]
+[ext_resource type="Texture2D" uid="uid://d0au3c3d5ac26" path="res://assets/items/effect_key/3.png" id="5_cd0ur"]
+[ext_resource type="Texture2D" uid="uid://bjvlywncj0u1j" path="res://assets/items/effect_key/4.png" id="6_b65nr"]
+[ext_resource type="Texture2D" uid="uid://vtr6tqvv86ft" path="res://assets/items/effect_key/5.png" id="7_ycpe2"]
+[ext_resource type="Texture2D" uid="uid://dkg0opamvrku3" path="res://assets/items/effect_key/6.png" id="8_mi1ok"]
+[ext_resource type="Texture2D" uid="uid://cj6ut62hb8vyb" path="res://assets/items/effect_key/7.png" id="9_qgcgs"]
+[ext_resource type="Texture2D" uid="uid://cp7su2wk8g5t2" path="res://assets/items/effect_key/8.png" id="10_hq08f"]
+[ext_resource type="Texture2D" uid="uid://ct18xadr4u880" path="res://assets/items/effect_key/9.png" id="11_dx74k"]
+[ext_resource type="Texture2D" uid="uid://cs6x5aky36xln" path="res://assets/items/effect_key/10.png" id="12_4tjjv"]
+[ext_resource type="Texture2D" uid="uid://c6ofnjnrodehd" path="res://assets/items/effect_key/11.png" id="13_gtqbo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3g5hk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0oijc")
+}],
+"loop": 1,
+"name": &"spin",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q212w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uwrun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8obva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cd0ur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b65nr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ycpe2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mi1ok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qgcgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hq08f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dx74k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4tjjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gtqbo")
+}],
+"loop": 0,
+"name": &"pop",
+"speed": 24.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cj4n4"]
+radius = 0.6
+
+[node name="Key" type="Area3D" unique_id=371072517]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_vmplw")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=623387293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+offset = Vector2(0, 16)
+pixel_size = 0.0625
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_3g5hk")
+animation = &"spin"
+autoplay = "spin"
+frame_progress = 0.011857543
+
+[node name="Effect" type="AnimatedSprite3D" parent="." unique_id=1113572344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+offset = Vector2(0, 24)
+pixel_size = 0.0625
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_q212w")
+animation = &"pop"
+frame = 10
+frame_progress = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=771038756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("SphereShape3D_cj4n4")

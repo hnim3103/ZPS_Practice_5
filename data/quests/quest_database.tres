@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="QuestDatabase" format=3 uid="uid://qyerty5c5upt"]
+
+[ext_resource type="Script" uid="uid://br7e282n6ejmu" path="res://scripts/quest/quest_database.gd" id="1_db"]
+[ext_resource type="Script" uid="uid://b1bbx5chhifxn" path="res://scripts/quest/quest_data.gd" id="1_gtjh1"]
+[ext_resource type="Resource" uid="uid://fi33mpueshbm" path="res://data/quests/coins.tres" id="2_i0rk6"]
+[ext_resource type="Resource" uid="uid://df0stc620b78d" path="res://data/quests/crabs.tres" id="3_voajw"]
+
+[resource]
+script = ExtResource("1_db")
+quests = Array[ExtResource("1_gtjh1")]([ExtResource("2_i0rk6"), ExtResource("3_voajw")])

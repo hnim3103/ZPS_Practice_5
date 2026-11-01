@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://douabr416gj51"]
+
+[ext_resource type="Script" uid="uid://dshd17xkcjn8d" path="res://tests/math/path_runner.gd" id="1_cfy72"]
+[ext_resource type="Script" uid="uid://bdkf1amoj0jux" path="res://tests/math/curve_preview.gd" id="2_0iurp"]
+[ext_resource type="Script" uid="uid://digv6t508uy0a" path="res://tests/math/manual_mover.gd" id="3_o2m3p"]
+
+[sub_resource type="Curve3D" id="Curve3D_52pgg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, -0.6, 3, 0, 0, 0, 0, -4, 3, 0, 0, 0, 0, 7, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v58nc"]
+albedo_color = Color(0.95, 0.35, 0.3, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2hd34"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jigow"]
+shading_mode = 0
+albedo_color = Color(1, 0.9, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3dfe"]
+albedo_color = Color(0.3, 0.5, 0.95, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jlxsc"]
+radius = 0.2
+height = 0.4
+
+[node name="TestBezier" type="Node3D" unique_id=874467128]
+
+[node name="Path3D" type="Path3D" parent="." unique_id=2066667601]
+curve = SubResource("Curve3D_52pgg")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=170069221]
+rotation_mode = 0
+script = ExtResource("1_cfy72")
+
+[node name="Ball" type="MeshInstance3D" parent="Path3D/PathFollow3D" unique_id=883314322]
+material_override = SubResource("StandardMaterial3D_v58nc")
+mesh = SubResource("SphereMesh_2hd34")
+
+[node name="CurvePreview" type="MeshInstance3D" parent="." unique_id=490484971 node_paths=PackedStringArray("path")]
+material_override = SubResource("StandardMaterial3D_jigow")
+script = ExtResource("2_0iurp")
+path = NodePath("../Path3D")
+
+[node name="ManualMover" type="Node3D" parent="." unique_id=2000621419]
+script = ExtResource("3_o2m3p")
+
+[node name="Ball" type="MeshInstance3D" parent="ManualMover" unique_id=1225734004]
+material_override = SubResource("StandardMaterial3D_j3dfe")
+mesh = SubResource("SphereMesh_jlxsc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=956952116]
+transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=677319670]
+transform = Transform3D(1, 0, 0, 0, 0.9995503, 0.029986504, 0, -0.029986504, 0.9995503, 3.2, 1.5, 9)
+current = true
